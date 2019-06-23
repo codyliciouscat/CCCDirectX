@@ -6,7 +6,23 @@
 
 LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 
-int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, PWSTR pCmdLine, int nCmdShow)
+/*HWND CreateFullscreenWindow(HWND hwnd)
+{
+  HMONITOR hmon = MonitorFromWindow(hwnd,
+    MONITOR_DEFAULTTONEAREST);
+  MONITORINFO mi = { sizeof(mi) };
+  if (!GetMonitorInfo(hmon, &mi)) return NULL;
+  return CreateWindowW(TEXT("static"),
+    TEXT("something interesting might go here"),
+    WS_POPUP | WS_VISIBLE,
+    mi.rcMonitor.left,
+    mi.rcMonitor.top,
+    mi.rcMonitor.right - mi.rcMonitor.left,
+    mi.rcMonitor.bottom - mi.rcMonitor.top,
+    hwnd, NULL, g_hinst, 0);
+}*/
+
+int WINAPI wWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE, _In_ PWSTR pCmdLine, _In_ int nCmdShow)
 {
     // Register the window class.
     const wchar_t CLASS_NAME[] = L"Window";
@@ -25,10 +41,10 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, PWSTR pCmdLine, int nCmdShow
         1,                      // Optional window styles.
         CLASS_NAME,             // Window class
         L"",                    // Window text
-      WS_BORDER,//WS_OVERLAPPEDWINDOW,    // Window style
+        WS_OVERLAPPEDWINDOW,    // Window style
 
         // Size and position
-        CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT,
+        0, 0, GetSystemMetrics(SM_CXSCREEN), GetSystemMetrics(SM_CYSCREEN),
 
         NULL,       // Parent window    
         NULL,       // Menu
