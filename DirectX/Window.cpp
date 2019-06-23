@@ -4,7 +4,7 @@
 
 #include <windows.h>
 
-LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
+LRESULT CALLBACK WindowProc(_In_ HWND hwnd, _In_ UINT uMsg, _In_ WPARAM wParam, _In_ LPARAM lParam);
 
 /*HWND CreateFullscreenWindow(HWND hwnd)
 {
@@ -71,7 +71,7 @@ int WINAPI wWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE, _In_ PWSTR pCm
     return 0;
 }
 
-LRESULT CALLBACK WindowProc(_In_ HWND hwnd, _In_opt_ UINT uMsg, _In_ WPARAM wParam, _In_ LPARAM lParam)
+LRESULT CALLBACK WindowProc(_In_ HWND hwnd, _In_ UINT uMsg, _In_ WPARAM wParam, _In_ LPARAM lParam)
 {
     switch (uMsg)
     {
